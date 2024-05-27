@@ -9,5 +9,4 @@ public class LidarApiApplication {
     public static void main(String[] args) {
         SpringApplication.run(LidarApiApplication.class, args);
     }
-
 }

@@ -9,6 +9,7 @@ import java.io.IOException;
 public interface DataResourceService {
      MetadataDto getMetadataDto() throws IOException;
 
+     byte[] getBinaryFile(LidarDataRequest request) throws IOException;
 
 
 }
