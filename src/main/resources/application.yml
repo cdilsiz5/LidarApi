@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: Lidar Api
+lidar:
+  data-file-path: "src/main/resources/files/lidar_case.data"
+  idx-file-path: "src/main/resources/files/lidar_case.data.idx"
+openapi:
+  title: "Lidar API"
+  description: "Lidar data processing application"
+  version: "v1.0"
+  license:
+    name: "Apache 2.0"
+    url: "http://springdoc.org"
