@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -36,6 +37,20 @@ public class DataResourceController {
     @GetMapping("/metadata")
     public MetadataDto getMetadata() throws IOException {
         return dataResourceService.getMetadataDto();
+    }
+    @Operation(summary = "Get Binary Data",
+            description = "Returns binary data based on group IDs",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Successfully retrieved binary data",
+                            content = @Content(schema = @Schema(implementation = byte[].class)))
+            })
+    @GetMapping("/data")
+    public byte [] getBinaryData(@RequestParam int startGroupId, @RequestParam int endGroupId) throws IOException {
+        LidarDataRequest request = LidarDataRequest.builder()
+                .startGroupId(startGroupId)
+                .endGroupId(endGroupId)
+                .build();
+        return dataResourceService.getBinaryFile(request);
     }
 
 }

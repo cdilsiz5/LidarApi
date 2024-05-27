@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.util.List;
 
 @Data
 @Builder
@@ -19,7 +20,7 @@ import java.nio.channels.FileChannel;
 public class BinaryFile {
     private byte[] fullData;
     private Metadata metadata;
-
+    //DATA PATH
     public void initializeAndLoadFullData(Metadata metadata, String dataFilePath) throws IOException {
         log.info("Initializing and loading full data from {}.", dataFilePath);
         this.metadata = metadata;
@@ -33,5 +34,31 @@ public class BinaryFile {
         }
     }
 
+    public byte[] getDataSegment(int startGroupId, int endGroupId) throws IOException {
+        long startOffset = -1;
+        long endOffset = -1;
+        List<GroupInfo> groups = this.metadata.getGroups();
 
+        for (GroupInfo group : groups) {
+            if (group.getGroup_id() == startGroupId) {
+                startOffset = group.getOffset();
+                log.info("Found start offset: {}", startOffset);
+            }
+            if (group.getGroup_id() == endGroupId) {
+                endOffset = group.getOffset() + group.getSize();
+                log.info("Calculated end offset: {}", endOffset);
+                break;
+            }
+        }
+
+        if (startOffset == -1 || endOffset == -1) {
+            log.error("Start or end group ID not found in the metadata.");
+            throw new IOException("Start or end group ID not found in the metadata.");
+        }
+
+        int length = (int) (endOffset - startOffset);
+        byte[] segmentData = new byte[length];
+        System.arraycopy(this.fullData, (int) startOffset, segmentData, 0, length);
+        return segmentData;
+    }
 }

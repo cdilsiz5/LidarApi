@@ -6,6 +6,7 @@ import com.luxoft.app.lidarapi.model.BinaryFile;
 import com.luxoft.app.lidarapi.model.GroupInfo;
 import com.luxoft.app.lidarapi.model.Metadata;
 import com.luxoft.app.lidarapi.request.LidarDataRequest;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,6 +49,16 @@ public class DataResourceServiceImpl implements DataResourceService {
                 .startGroupId(startGroupId)
                 .maxGroupSize(maxGroupSize)
                 .build();
+    }
+    @Override
+    public byte[] getBinaryFile(LidarDataRequest request) throws IOException {
+        if (binaryFile == null || binaryFile.getFullData() == null) {
+            log.info("Loading binary file data due to cache miss.");
+            Metadata metadata = readMetadata(idxFilePath, objectMapper);
+            binaryFile = new BinaryFile();
+            binaryFile.initializeAndLoadFullData(metadata, dataFilePath);
+        }
+        return binaryFile.getDataSegment(request.getStartGroupId(), request.getEndGroupId());
     }
 
     private Metadata readMetadata(String idxFilePath, ObjectMapper objectMapper) throws IOException {
