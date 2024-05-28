@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class LidarDataRequest {
-    @Min(1)
+    @Min(0)
     private int startGroupId;
 
-    @Min(1)
+    @Min(0)
     private int endGroupId;
 
 

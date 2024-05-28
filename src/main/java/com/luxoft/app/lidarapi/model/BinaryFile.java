@@ -1,11 +1,11 @@
 package com.luxoft.app.lidarapi.model;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.MappedByteBuffer;
@@ -19,11 +19,23 @@ import java.util.List;
 @Slf4j
 public class BinaryFile {
     private byte[] fullData;
+
     private Metadata metadata;
-    //DATA PATH
-    public void initializeAndLoadFullData(Metadata metadata, String dataFilePath) throws IOException {
+
+    private String dataFilePath;
+
+    private String idxFilePath;
+
+
+    public BinaryFile(String dataFilePath, String idxFilePath,ObjectMapper objectMapper) throws IOException {
+        this.dataFilePath = dataFilePath;
+        this.idxFilePath = idxFilePath;
+        this.metadata = readMetadata(objectMapper);
+        initializeAndLoadFullData();
+    }
+
+    public void initializeAndLoadFullData() throws IOException {
         log.info("Initializing and loading full data from {}.", dataFilePath);
-        this.metadata = metadata;
 
         try (RandomAccessFile file = new RandomAccessFile(dataFilePath, "r");
              FileChannel channel = file.getChannel()) {
@@ -60,5 +72,15 @@ public class BinaryFile {
         byte[] segmentData = new byte[length];
         System.arraycopy(this.fullData, (int) startOffset, segmentData, 0, length);
         return segmentData;
+    }
+
+    protected Metadata readMetadata( ObjectMapper objectMapper) throws IOException {
+        log.info("Reading metadata from {}", idxFilePath);
+        try (RandomAccessFile idxFile = new RandomAccessFile(idxFilePath, "r")) {
+            return objectMapper.readValue(idxFile, Metadata.class);
+        } catch (IOException e) {
+            log.error("Error reading metadata from {}: {}", idxFilePath, e.getMessage());
+            throw e;
+        }
     }
 }
