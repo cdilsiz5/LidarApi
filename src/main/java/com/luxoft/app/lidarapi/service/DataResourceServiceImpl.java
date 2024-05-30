@@ -7,6 +7,7 @@ import com.luxoft.app.lidarapi.model.GroupInfo;
 import com.luxoft.app.lidarapi.model.Metadata;
 import com.luxoft.app.lidarapi.request.LidarDataRequest;
 
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +20,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Data
+
 public class DataResourceServiceImpl implements DataResourceService {
 
     @Value("${lidar.data-file-path}")
@@ -28,15 +31,14 @@ public class DataResourceServiceImpl implements DataResourceService {
     private String idxFilePath;
 
     private final ObjectMapper objectMapper;
+
     private BinaryFile binaryFile;
 
     @Override
     public MetadataDto getMetadataDto() throws IOException {
         if (binaryFile == null) {
             log.info("Initializing binary file data for the first time.");
-            Metadata metadata = readMetadata(idxFilePath, objectMapper);
-            binaryFile = new BinaryFile();
-            binaryFile.initializeAndLoadFullData(metadata, dataFilePath);
+            binaryFile = new BinaryFile(dataFilePath,idxFilePath,objectMapper);
         }
         List<GroupInfo> groups = binaryFile.getMetadata().getGroups();
         int totalGroups = groups.size();
@@ -50,24 +52,17 @@ public class DataResourceServiceImpl implements DataResourceService {
                 .maxGroupSize(maxGroupSize)
                 .build();
     }
-    @Override
     public byte[] getBinaryFile(LidarDataRequest request) throws IOException {
+        if (request.getStartGroupId() > request.getEndGroupId()) {
+            throw new IllegalArgumentException("Start group ID must be less than or equal to end group ID.");
+        }
         if (binaryFile == null || binaryFile.getFullData() == null) {
             log.info("Loading binary file data due to cache miss.");
-            Metadata metadata = readMetadata(idxFilePath, objectMapper);
-            binaryFile = new BinaryFile();
-            binaryFile.initializeAndLoadFullData(metadata, dataFilePath);
+            binaryFile = new BinaryFile(dataFilePath,idxFilePath,objectMapper);
         }
         return binaryFile.getDataSegment(request.getStartGroupId(), request.getEndGroupId());
     }
 
-    private Metadata readMetadata(String idxFilePath, ObjectMapper objectMapper) throws IOException {
-        log.info("Reading metadata from {}", idxFilePath);
-        try (RandomAccessFile idxFile = new RandomAccessFile(idxFilePath, "r")) {
-            return objectMapper.readValue(idxFile, Metadata.class);
-        } catch (IOException e) {
-            log.error("Error reading metadata from {}: {}", idxFilePath, e.getMessage());
-            throw e;
-        }
-    }
+
+
 }
