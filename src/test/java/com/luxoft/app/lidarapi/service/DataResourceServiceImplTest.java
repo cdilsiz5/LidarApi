@@ -43,7 +43,7 @@ class DataResourceServiceImplTest {
         ));
 
         when(binaryFile.getMetadata()).thenReturn(metadata);
-        doNothing().when(binaryFile).initializeAndLoadFullData();
+        //doNothing().when(binaryFile).initializeAndLoadFullData();
         when(binaryFile.getDataSegment(anyInt(), anyInt())).thenReturn(new byte[150]);
         when(binaryFile.getFullData()).thenReturn(new byte[600]); // Adjust size accordingly
         service.setBinaryFile(binaryFile);

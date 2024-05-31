@@ -1,0 +1,611 @@
+{
+    "dataSource": "Test Aggregated Pointcloud",
+    "groups": [
+        {
+            "group_id": 0,
+            "points": 12674,
+            "offset": 0,
+            "size": 152088
+        },
+        {
+            "group_id": 1,
+            "points": 14231,
+            "offset": 152088,
+            "size": 170772
+        },
+        {
+            "group_id": 2,
+            "points": 3288,
+            "offset": 322860,
+            "size": 39456
+        },
+        {
+            "group_id": 3,
+            "points": 6521,
+            "offset": 362316,
+            "size": 78252
+        },
+        {
+            "group_id": 4,
+            "points": 11322,
+            "offset": 440568,
+            "size": 135864
+        },
+        {
+            "group_id": 5,
+            "points": 9796,
+            "offset": 576432,
+            "size": 117552
+        },
+        {
+            "group_id": 6,
+            "points": 14248,
+            "offset": 693984,
+            "size": 170976
+        },
+        {
+            "group_id": 7,
+            "points": 13858,
+            "offset": 864960,
+            "size": 166296
+        },
+        {
+            "group_id": 8,
+            "points": 6264,
+            "offset": 1031256,
+            "size": 75168
+        },
+        {
+            "group_id": 9,
+            "points": 11938,
+            "offset": 1106424,
+            "size": 143256
+        },
+        {
+            "group_id": 10,
+            "points": 13377,
+            "offset": 1249680,
+            "size": 160524
+        },
+        {
+            "group_id": 11,
+            "points": 6989,
+            "offset": 1410204,
+            "size": 83868
+        },
+        {
+            "group_id": 12,
+            "points": 5036,
+            "offset": 1494072,
+            "size": 60432
+        },
+        {
+            "group_id": 13,
+            "points": 13624,
+            "offset": 1554504,
+            "size": 163488
+        },
+        {
+            "group_id": 14,
+            "points": 12107,
+            "offset": 1717992,
+            "size": 145284
+        },
+        {
+            "group_id": 15,
+            "points": 14035,
+            "offset": 1863276,
+            "size": 168420
+        },
+        {
+            "group_id": 16,
+            "points": 14428,
+            "offset": 2031696,
+            "size": 173136
+        },
+        {
+            "group_id": 17,
+            "points": 6162,
+            "offset": 2204832,
+            "size": 73944
+        },
+        {
+            "group_id": 18,
+            "points": 11762,
+            "offset": 2278776,
+            "size": 141144
+        },
+        {
+            "group_id": 19,
+            "points": 8225,
+            "offset": 2419920,
+            "size": 98700
+        },
+        {
+            "group_id": 20,
+            "points": 12696,
+            "offset": 2518620,
+            "size": 152352
+        },
+        {
+            "group_id": 21,
+            "points": 8083,
+            "offset": 2670972,
+            "size": 96996
+        },
+        {
+            "group_id": 22,
+            "points": 11226,
+            "offset": 2767968,
+            "size": 134712
+        },
+        {
+            "group_id": 23,
+            "points": 6597,
+            "offset": 2902680,
+            "size": 79164
+        },
+        {
+            "group_id": 24,
+            "points": 11696,
+            "offset": 2981844,
+            "size": 140352
+        },
+        {
+            "group_id": 25,
+            "points": 9998,
+            "offset": 3122196,
+            "size": 119976
+        },
+        {
+            "group_id": 26,
+            "points": 8781,
+            "offset": 3242172,
+            "size": 105372
+        },
+        {
+            "group_id": 27,
+            "points": 9666,
+            "offset": 3347544,
+            "size": 115992
+        },
+        {
+            "group_id": 28,
+            "points": 9441,
+            "offset": 3463536,
+            "size": 113292
+        },
+        {
+            "group_id": 29,
+            "points": 12975,
+            "offset": 3576828,
+            "size": 155700
+        },
+        {
+            "group_id": 30,
+            "points": 11477,
+            "offset": 3732528,
+            "size": 137724
+        },
+        {
+            "group_id": 31,
+            "points": 10379,
+            "offset": 3870252,
+            "size": 124548
+        },
+        {
+            "group_id": 32,
+            "points": 8849,
+            "offset": 3994800,
+            "size": 106188
+        },
+        {
+            "group_id": 33,
+            "points": 12709,
+            "offset": 4100988,
+            "size": 152508
+        },
+        {
+            "group_id": 34,
+            "points": 14798,
+            "offset": 4253496,
+            "size": 177576
+        },
+        {
+            "group_id": 35,
+            "points": 11433,
+            "offset": 4431072,
+            "size": 137196
+        },
+        {
+            "group_id": 36,
+            "points": 14550,
+            "offset": 4568268,
+            "size": 174600
+        },
+        {
+            "group_id": 37,
+            "points": 12613,
+            "offset": 4742868,
+            "size": 151356
+        },
+        {
+            "group_id": 38,
+            "points": 12330,
+            "offset": 4894224,
+            "size": 147960
+        },
+        {
+            "group_id": 39,
+            "points": 10900,
+            "offset": 5042184,
+            "size": 130800
+        },
+        {
+            "group_id": 40,
+            "points": 8325,
+            "offset": 5172984,
+            "size": 99900
+        },
+        {
+            "group_id": 41,
+            "points": 11400,
+            "offset": 5272884,
+            "size": 136800
+        },
+        {
+            "group_id": 42,
+            "points": 13901,
+            "offset": 5409684,
+            "size": 166812
+        },
+        {
+            "group_id": 43,
+            "points": 13889,
+            "offset": 5576496,
+            "size": 166668
+        },
+        {
+            "group_id": 44,
+            "points": 12320,
+            "offset": 5743164,
+            "size": 147840
+        },
+        {
+            "group_id": 45,
+            "points": 9744,
+            "offset": 5891004,
+            "size": 116928
+        },
+        {
+            "group_id": 46,
+            "points": 11755,
+            "offset": 6007932,
+            "size": 141060
+        },
+        {
+            "group_id": 47,
+            "points": 7195,
+            "offset": 6148992,
+            "size": 86340
+        },
+        {
+            "group_id": 48,
+            "points": 3250,
+            "offset": 6235332,
+            "size": 39000
+        },
+        {
+            "group_id": 49,
+            "points": 12946,
+            "offset": 6274332,
+            "size": 155352
+        },
+        {
+            "group_id": 50,
+            "points": 3674,
+            "offset": 6429684,
+            "size": 44088
+        },
+        {
+            "group_id": 51,
+            "points": 4930,
+            "offset": 6473772,
+            "size": 59160
+        },
+        {
+            "group_id": 52,
+            "points": 12183,
+            "offset": 6532932,
+            "size": 146196
+        },
+        {
+            "group_id": 53,
+            "points": 11025,
+            "offset": 6679128,
+            "size": 132300
+        },
+        {
+            "group_id": 54,
+            "points": 10752,
+            "offset": 6811428,
+            "size": 129024
+        },
+        {
+            "group_id": 55,
+            "points": 10705,
+            "offset": 6940452,
+            "size": 128460
+        },
+        {
+            "group_id": 56,
+            "points": 14385,
+            "offset": 7068912,
+            "size": 172620
+        },
+        {
+            "group_id": 57,
+            "points": 12205,
+            "offset": 7241532,
+            "size": 146460
+        },
+        {
+            "group_id": 58,
+            "points": 3295,
+            "offset": 7387992,
+            "size": 39540
+        },
+        {
+            "group_id": 59,
+            "points": 5720,
+            "offset": 7427532,
+            "size": 68640
+        },
+        {
+            "group_id": 60,
+            "points": 14381,
+            "offset": 7496172,
+            "size": 172572
+        },
+        {
+            "group_id": 61,
+            "points": 4777,
+            "offset": 7668744,
+            "size": 57324
+        },
+        {
+            "group_id": 62,
+            "points": 6308,
+            "offset": 7726068,
+            "size": 75696
+        },
+        {
+            "group_id": 63,
+            "points": 4970,
+            "offset": 7801764,
+            "size": 59640
+        },
+        {
+            "group_id": 64,
+            "points": 4090,
+            "offset": 7861404,
+            "size": 49080
+        },
+        {
+            "group_id": 65,
+            "points": 8087,
+            "offset": 7910484,
+            "size": 97044
+        },
+        {
+            "group_id": 66,
+            "points": 14203,
+            "offset": 8007528,
+            "size": 170436
+        },
+        {
+            "group_id": 67,
+            "points": 4689,
+            "offset": 8177964,
+            "size": 56268
+        },
+        {
+            "group_id": 68,
+            "points": 6062,
+            "offset": 8234232,
+            "size": 72744
+        },
+        {
+            "group_id": 69,
+            "points": 7490,
+            "offset": 8306976,
+            "size": 89880
+        },
+        {
+            "group_id": 70,
+            "points": 7542,
+            "offset": 8396856,
+            "size": 90504
+        },
+        {
+            "group_id": 71,
+            "points": 3258,
+            "offset": 8487360,
+            "size": 39096
+        },
+        {
+            "group_id": 72,
+            "points": 11802,
+            "offset": 8526456,
+            "size": 141624
+        },
+        {
+            "group_id": 73,
+            "points": 6492,
+            "offset": 8668080,
+            "size": 77904
+        },
+        {
+            "group_id": 74,
+            "points": 11417,
+            "offset": 8745984,
+            "size": 137004
+        },
+        {
+            "group_id": 75,
+            "points": 6361,
+            "offset": 8882988,
+            "size": 76332
+        },
+        {
+            "group_id": 76,
+            "points": 13400,
+            "offset": 8959320,
+            "size": 160800
+        },
+        {
+            "group_id": 77,
+            "points": 9786,
+            "offset": 9120120,
+            "size": 117432
+        },
+        {
+            "group_id": 78,
+            "points": 10240,
+            "offset": 9237552,
+            "size": 122880
+        },
+        {
+            "group_id": 79,
+            "points": 12432,
+            "offset": 9360432,
+            "size": 149184
+        },
+        {
+            "group_id": 80,
+            "points": 5565,
+            "offset": 9509616,
+            "size": 66780
+        },
+        {
+            "group_id": 81,
+            "points": 6888,
+            "offset": 9576396,
+            "size": 82656
+        },
+        {
+            "group_id": 82,
+            "points": 3039,
+            "offset": 9659052,
+            "size": 36468
+        },
+        {
+            "group_id": 83,
+            "points": 7234,
+            "offset": 9695520,
+            "size": 86808
+        },
+        {
+            "group_id": 84,
+            "points": 14537,
+            "offset": 9782328,
+            "size": 174444
+        },
+        {
+            "group_id": 85,
+            "points": 8183,
+            "offset": 9956772,
+            "size": 98196
+        },
+        {
+            "group_id": 86,
+            "points": 3770,
+            "offset": 10054968,
+            "size": 45240
+        },
+        {
+            "group_id": 87,
+            "points": 7415,
+            "offset": 10100208,
+            "size": 88980
+        },
+        {
+            "group_id": 88,
+            "points": 9871,
+            "offset": 10189188,
+            "size": 118452
+        },
+        {
+            "group_id": 89,
+            "points": 6605,
+            "offset": 10307640,
+            "size": 79260
+        },
+        {
+            "group_id": 90,
+            "points": 3755,
+            "offset": 10386900,
+            "size": 45060
+        },
+        {
+            "group_id": 91,
+            "points": 13211,
+            "offset": 10431960,
+            "size": 158532
+        },
+        {
+            "group_id": 92,
+            "points": 7610,
+            "offset": 10590492,
+            "size": 91320
+        },
+        {
+            "group_id": 93,
+            "points": 3360,
+            "offset": 10681812,
+            "size": 40320
+        },
+        {
+            "group_id": 94,
+            "points": 11403,
+            "offset": 10722132,
+            "size": 136836
+        },
+        {
+            "group_id": 95,
+            "points": 8566,
+            "offset": 10858968,
+            "size": 102792
+        },
+        {
+            "group_id": 96,
+            "points": 8122,
+            "offset": 10961760,
+            "size": 97464
+        },
+        {
+            "group_id": 97,
+            "points": 4281,
+            "offset": 11059224,
+            "size": 51372
+        },
+        {
+            "group_id": 98,
+            "points": 6398,
+            "offset": 11110596,
+            "size": 76776
+        },
+        {
+            "group_id": 99,
+            "points": 6800,
+            "offset": 11187372,
+            "size": 81600
+        },
+        {
+            "group_id": 100,
+            "points": 13354,
+            "offset": 11268972,
+            "size": 160248
+        }
+    ]
+}
