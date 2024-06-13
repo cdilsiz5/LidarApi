@@ -35,8 +35,9 @@ export class IndexDbService {
     });
   }
 
-  async saveSessionData(session: Session) {
-    return this.db.put('sessions', session);
+  async saveSessionData(session: { sessionId: string, startGroupId: number, endGroupId: number, data: ArrayBuffer }) {
+    const key = `${session.sessionId}-${session.startGroupId}-${session.endGroupId}`;
+    return this.db.put('sessions', { key, value: session.data });
   }
   async isSessionImported(sessionId: string): Promise<boolean> {
     const session = await this.db.get('sessions', sessionId);

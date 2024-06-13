@@ -37,28 +37,59 @@ export class SessionsTableComponent implements OnInit {
 
   fetchSessionData(sessionId: string) {
     this.lidarDataService.getMetadata(sessionId).subscribe(metadata => {
-      this.lidarDataService.getBinaryData(sessionId, metadata.startGroupId, metadata.groups - 1).subscribe(async (data: ArrayBuffer) => {
-        const session = { key: sessionId, value: data };
-        try {
-          await this.indexDbService.saveSessionData(session);
-          console.log('Data saved to IndexedDB for', sessionId);
-          this.updateSessionImportedStatus(sessionId, true);
-        } catch (err) {
-          console.error('Error saving data to IndexedDB:', err);
-        }
-      }, error => {
-        console.error('Error fetching binary data:', error);
-      });
+      const totalGroups = metadata.groups;
+      const maxGroupsPerRequest = 20;
+      const numRequests = Math.ceil(totalGroups / maxGroupsPerRequest);
+      let completedRequests = 0;
+
+      for (let i = 0; i < numRequests; i++) {
+        const startGroupId = i * maxGroupsPerRequest;
+        const endGroupId = Math.min((i + 1) * maxGroupsPerRequest - 1, totalGroups - 1);
+
+        const worker = new Worker('./assets/fetchData.worker.js', { type: 'module' });
+        worker.postMessage({
+          sessionId: sessionId,
+          startGroupId: startGroupId,
+          endGroupId: endGroupId,
+          apiUrl: 'http://localhost:8080/api/v2/luxoft'
+        });
+
+        worker.onmessage = (event) => {
+          const { data, sessionId, startGroupId, endGroupId } = event.data;
+          this.indexDbService.saveSessionData({
+            sessionId,
+            startGroupId,
+            endGroupId,
+            data
+          }).then(() => {
+            console.log(`Data saved to IndexedDB for ${sessionId} from group ${startGroupId} to ${endGroupId}`);
+            completedRequests++;
+            if (completedRequests === numRequests) {
+              this.updateSessionImportedStatus(sessionId);
+            }
+          }).catch(err => {
+            console.error('Error saving data to IndexedDB:', err);
+          });
+          worker.terminate();
+        };
+
+        worker.onerror = (error) => {
+          console.error('Error in worker:', error);
+        };
+      }
     }, error => {
       console.error('Error fetching metadata:', error);
     });
   }
 
-  private updateSessionImportedStatus(sessionId: string, imported: boolean) {
-    const session = this.dataSource.data.find(s => s.sessionId === sessionId);
-    if (session) {
-      session.imported = imported;
+
+
+  private updateSessionImportedStatus(sessionId: string) {
+    const sessionIndex = this.dataSource.data.findIndex(s => s.sessionId === sessionId);
+    if (sessionIndex !== -1) {
+      this.dataSource.data[sessionIndex].imported = true;
       this.dataSource._updateChangeSubscription();
     }
   }
+
 }
