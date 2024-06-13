@@ -9,6 +9,7 @@ LidarApi is a Spring Boot application for processing LiDAR data. This project pr
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
+- [Frontend Features](#frontend-features)
 
 ## Getting Started
 
@@ -21,6 +22,7 @@ Before you begin, ensure you have met the following requirements:
 - Maven 3.6.0 
 - Spring Boot 3.2.5
 - Git
+- Node.js and npm (for the frontend)
 
 
 
